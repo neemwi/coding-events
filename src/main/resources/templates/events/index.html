@@ -12,10 +12,14 @@
       <thead>
          <tr>
             <th>Name</th>
+             <th>Description</th>
+             <th>Address</th>
          </tr>
       </thead>
-      <tr th:each="event : ${events}">
+      <tr th:each="event : ${events.keySet()}">
          <td th:text="${event}"></td>
+          <td th:text="${events.get(event)}"></td>
+          <td th:replace="fragments2 :: address"></td>
       </tr>
 </table>
 
