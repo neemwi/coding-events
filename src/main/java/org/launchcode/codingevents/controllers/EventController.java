@@ -52,14 +52,15 @@ public class EventController {
 
     }
 
-    // if when deleting all events it doesnt redirect you can use @RequestParam(required = false)
+
     @PostMapping("delete")
-    public String processDeleteEventsForm(@RequestParam int[] eventIds) {
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
 
-        for (int id : eventIds) {
-            EventData.remove(id);
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                EventData.remove(id);
+            }
         }
-
         return "redirect:";
     }
 }
