@@ -29,12 +29,15 @@ public class Event {
     @Positive
     private int numOfAttendees;
 
+    private EventType type;
 
 
-    public Event(String name, String description, String contactEmail, String location, Boolean mustRegister) {
+
+    public Event(String name, String description, String contactEmail, String location, Boolean mustRegister, EventType type) {
         this();
         this.name = name;
         this.description = description;
+        this.type= type;
         this.contactEmail = contactEmail;
         this.location = location;
         this.mustRegister = mustRegister;
@@ -94,6 +97,14 @@ public class Event {
 
     public void setNumOfAttendees(int numOfAttendees) {
         this.numOfAttendees = numOfAttendees;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public int getId() {
