@@ -1,6 +1,7 @@
 package org.launchcode.codingevents.data;
 
 import org.launchcode.codingevents.models.Event;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EventData {
+
 
     // need a place to put events
     private static final Map<Integer, Event> events = new HashMap<>();
