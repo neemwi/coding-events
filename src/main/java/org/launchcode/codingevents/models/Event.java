@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.*;
 import java.util.Objects;
 
-
 @Entity
 public class Event {
 
