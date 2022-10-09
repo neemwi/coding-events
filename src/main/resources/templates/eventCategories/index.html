@@ -14,8 +14,8 @@
         <th>Category Name</th>
     </tr>
     </thead>
-    <tr th:each="cat : ${categories}">
-        <td th:text="${cat.name}"></td>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}"></td>
 <!--        <td>-->
 <!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
 <!--        </td>-->
