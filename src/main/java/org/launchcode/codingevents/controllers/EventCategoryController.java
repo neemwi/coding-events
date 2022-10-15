@@ -23,8 +23,8 @@ public class EventCategoryController {
     private EventCategoryRepository eventCategoryRepository;
 
 
-    @GetMapping
-    private String displayAllEvents(Model model) {
+    @GetMapping()
+    public String displayAllEvents(Model model) {
     model.addAttribute("title", "All Categories");
     model.addAttribute("categories", eventCategoryRepository.findAll());
 

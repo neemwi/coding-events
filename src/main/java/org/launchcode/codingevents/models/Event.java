@@ -1,7 +1,10 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Objects;
 
@@ -12,12 +15,10 @@ public class Event extends AbstractEntity {
     @NotBlank(message = "Event Name is Required")
     private String name;
 
-    @Size(max = 500, message = "Description too long")
-    private String description;
-
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email, try again")
-    private String contactEmail;
+    @OneToOne(cascade = CascadeType.ALL)
+    @Valid
+    @NotNull
+    private EventDetails eventDetails;
 
     @NotBlank(message = "Location is required")
     @Size(max = 200, message="Location too long")
@@ -35,11 +36,9 @@ public class Event extends AbstractEntity {
 
 
 
-    public Event(String name, String description, String contactEmail, String location, Boolean mustRegister, EventCategory eventCategory) {
+    public Event(String name, String location, Boolean mustRegister, EventCategory eventCategory) {
         this.name = name;
-        this.description = description;
         this.eventCategory= eventCategory;
-        this.contactEmail = contactEmail;
         this.location = location;
         this.mustRegister = mustRegister;
 
@@ -56,21 +55,6 @@ public class Event extends AbstractEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getContactEmail() {
-        return contactEmail;
-    }
-
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
 
     public String getLocation() {
         return location;
@@ -102,6 +86,14 @@ public class Event extends AbstractEntity {
 
     public void setEventCategory(EventCategory eventCategory) {
         this.eventCategory = eventCategory;
+    }
+
+    public EventDetails getEventDetails() {
+        return eventDetails;
+    }
+
+    public void setEventDetails(EventDetails eventDetails) {
+        this.eventDetails = eventDetails;
     }
 
     @Override
